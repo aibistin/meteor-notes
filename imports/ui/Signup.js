@@ -1,8 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import { Accounts } from 'meteor/accounts-base';
+import { withTracker } from 'meteor/react-meteor-data';
+/* 
+    Testing using: 
+    meteor add practicalmeteor:mocha
+    meteor npm install --save-dev expect@1
+    
+    # Some enzyme stuff
+    meteor npm i --save-dev react-test-renderer@15
+    meteor npm i --save-dev enzyme enzyme-adapter-react-15
+  
+    meteor add react-meteor-data
+    
+*/
 
-export default class Signup extends React.Component {
+export class Signup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,14 +30,15 @@ export default class Signup extends React.Component {
     let password = this.refs.password.value.trim();
 
     if (password.length < 9) {
-      return this.setState({error: 'Password must be more than 8 characters long'});
+      return this.setState({ error: 'Password must be more than 8 characters long' });
     }
 
-    Accounts.createUser({email, password}, (err) => {
+    this.props.createAccount({ email, password }, (err) => {
       if (err) {
-        this.setState({error: err.reason});
-      } else {
-        this.setState({error: ''});
+        this.setState({ error: err.reason });
+      }
+      else {
+        this.setState({ error: '' });
       }
     });
   }
@@ -47,3 +62,14 @@ export default class Signup extends React.Component {
     );
   }
 }
+
+Signup.propTypes = {
+  createAccount: PropTypes.func.isRequired,
+};
+
+
+export default withTracker((props) => {
+  return {
+    createAccount: Accounts.createUser,
+  };
+})(Signup);
