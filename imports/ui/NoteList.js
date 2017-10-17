@@ -1,15 +1,17 @@
-import {Meteor} from 'meteor/meteor';
+import { Meteor } from 'meteor/meteor';
 import React from 'react';
 import PropTypes from 'prop-types';
-import {withTracker} from 'meteor/react-meteor-data';
-import {Notes} from '../api/notes';
+import { withTracker } from 'meteor/react-meteor-data';
+import { Notes } from '../api/notes';
 
 import NoteListHeader from './NoteListHeader';
 import NoteListItem from './NoteListItem';
+import NoteListEmptyItem from './NoteListEmptyItem';
 
-export const NoteList = (props) =>  {
-    return  (
+export const NoteList = (props) => {
+    return (
         <div>
+          { props.notes.length === 0 ? <NoteListEmptyItem/> : undefined } 
           <NoteListHeader />
           NoteList Count: { props.notes.length }
           {
@@ -18,17 +20,17 @@ export const NoteList = (props) =>  {
               })
           }
         </div>
-        );
+    );
 };
 
 NoteList.propTypes = {
-  notes: PropTypes.array.isRequired,  
+    notes: PropTypes.array.isRequired,
 };
 
 export default withTracker((props) => {
     Meteor.subscribe('notes');
-   return {
-    notes: Notes.find().fetch(),   
-   };
-    
+    return {
+        notes: Notes.find().fetch(),
+    };
+
 })(NoteList);
