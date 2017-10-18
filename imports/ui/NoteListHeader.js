@@ -4,7 +4,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 
 export const NoteListHeader = (props) => {
     return (
-        <div>
+      <div>
       <button onClick={ () => props.meteorCall('notes.insert') }>Create Note</button>
     </div>
     );

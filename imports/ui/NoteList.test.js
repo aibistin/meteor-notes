@@ -9,20 +9,8 @@ import moment from 'moment';
 /* Local */
 import { NoteList } from './NoteList';
 import { NoteListEmptyItem } from './NoteListEmptyItem';
+import { notes } from '../fixtures/fixtures';
 
-const notes = [{
-    _id: 'noteOne',
-    title: 'TitleOne',
-    body: 'Body One',
-    userid: 'userOne',
-    updatedAt: moment().valueOf(),
-}, {
-    _id: 'noteTwo',
-    title: 'TitleTwo',
-    body: 'Body Two',
-    userid: 'userTwo',
-    updatedAt: moment().valueOf(),
-}];
 
 if (Meteor.isClient) {
     describe("NoteList", function () {

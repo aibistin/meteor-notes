@@ -63,7 +63,7 @@ if (Meteor.isClient) {
       const wrapper = mount(<Signup createAccount={spy} />);
 
       wrapper.ref('password').value = password;
-      console.log("wrapper password node,", wrapper.ref('password').value);
+//      console.log("wrapper password node,", wrapper.ref('password').value);
 
       wrapper.find("form").simulate("submit");
       /* Pass the errorReason string to the 'error' callback */
