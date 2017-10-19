@@ -19,11 +19,24 @@ const onEnterPublicPage = () => {
     browserHistory.replace('/dashboard');
   }
 };
+
 const onEnterPrivatePage = () => {
   if (!Meteor.userId()) {
     browserHistory.replace('/');
   }
 };
+const onEnterNotesPage = (nextState) => {
+  if (!Meteor.userId()) {
+    browserHistory.replace('/');
+  }
+  else {
+    console.log("Next State, ", nextState);
+    /* nextState.params.id is the 'id' at the end of '/dashboard/somnoteid'. Preserve this in the session for after a screen refresh */
+    Session.set('selectedNoteId', nextState.params.id);
+  }
+};
+
+
 
 export const onAuthChange = (isAuthenticated) => {
   const pathname = browserHistory.getCurrentLocation().pathname;
@@ -32,7 +45,8 @@ export const onAuthChange = (isAuthenticated) => {
 
   if (isUnauthenticatedPage && isAuthenticated) {
     browserHistory.replace('/dashboard');
-  } else if (isAuthenticatedPage && !isAuthenticated) {
+  }
+  else if (isAuthenticatedPage && !isAuthenticated) {
     browserHistory.replace('/');
   }
 };
@@ -42,7 +56,7 @@ export const routes = (
     <Route path="/" component={Login} onEnter={onEnterPublicPage}/>
     <Route path="/signup" component={Signup} onEnter={onEnterPublicPage}/>
     <Route path="/dashboard" component={Dashboard} onEnter={onEnterPrivatePage}/>
-    <Route path="/dashboard/:id" component={Dashboard} onEnter={onEnterPrivatePage}/>
+    <Route path="/dashboard/:id" component={Dashboard} onEnter={onEnterNotesPage}/>
     <Route path="*" component={NotFound}/>
   </Router>
 );
