@@ -9,13 +9,15 @@ import '../imports/startup/simple-schema-configuration.js';
 
 Tracker.autorun(() => {
   const isAuthenticated = !!Meteor.userId();
-  onAuthChange(isAuthenticated);
+
+  const currentStatePrivacy = Session.get('currentStatePrivacy');
+  onAuthChange(isAuthenticated, currentStatePrivacy);
 });
 
 Tracker.autorun(() => {
   const selectedNoteId = Session.get('selectedNoteId');
-  
-  console.log("You selected a note with id, " + selectedNoteId);
+  console.log("main.js: You selected a note with id, " + selectedNoteId);
+
   if (selectedNoteId) {
     browserHistory.replace(`/dashboard/${selectedNoteId}`);
   }
