@@ -18,7 +18,7 @@ const onEnterNotesPage = (nextState) => {
   Session.set('selectedNoteId', nextState.params.id);
 };
 const onLeaveNotesPage = () => {
-    Session.set('selectedNoteId', undefined);
+  Session.set('selectedNoteId', undefined);
 };
 
 export const onAuthChange = (isAuthenticated, currentStatePrivacy) => {
