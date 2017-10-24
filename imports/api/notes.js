@@ -10,15 +10,15 @@ export const Notes = new Meteor.Collection('notes');
  */
 
 if (Meteor.isServer) {
-   Meteor.publish('notes', function() {
-      return Notes.find({ userId: this.userId });
-   });
+    Meteor.publish('notes', function () {
+        return Notes.find({ userId: this.userId });
+    });
 }
 
 /* 
  *      Methods
  */
- 
+
 Meteor.methods({
     'notes.insert' (note) {
         if (!this.userId) {
@@ -50,13 +50,11 @@ Meteor.methods({
             },
         }).validate(note);
 
-        Notes.insert({
+        return Notes.insert({
             userId: this.userId,
             updatedAt: moment().valueOf(),
             ...note,
         });
-
-
     },
     'notes.remove' (_id, userId) {
         if (!this.userId) {
@@ -112,13 +110,11 @@ Meteor.methods({
             },
         }).validate(noteUpdate);
 
-
-        Notes.update(noteSearch, {
+        return Notes.update(noteSearch, {
             $set: {
                 updatedAt: moment().valueOf(),
                 ...noteUpdate
             }
         });
-
     },
 });
