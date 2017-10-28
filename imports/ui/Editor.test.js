@@ -12,7 +12,6 @@ if (Meteor.isClient) {
     let meteorCall;
     let browserHistory;
 
-
     describe('Editor', function () {
 
         beforeEach(function () {
