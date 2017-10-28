@@ -3,21 +3,24 @@ $brand-primary: #397ab1;
 $grey: #dddddd;
 $light-grey: #f9f9f9;
 $dark-grey: #777777;
-$body-background-color: #fafafa;
-$body-default-color: #333333;
 
 // Spacing
 $space: 1.4rem;
-$large-space : 2.4rem;
+$large-space:    2.4rem;
 $site-max-width: 140rem;
 
 // Font sizes
-$base-font-size: 1.4rem;
-$large-font-size: 1.8rem;
+$base-font-size:  1.4rem;
+$large-font-size: 2.4rem;
 
 // Form inputs
-$input-border: $grey;
+$input-border:  $grey;
 $input-spacing: 1rem;
+
+//Body
+$body-background-color: #fafafa;
+$body-default-color: #333333;
+$body-default-font-family: Helvetica, Arial, sans-serif;
 
 // Boxed view
 $boxed-view-overlay-bg: $grey;
