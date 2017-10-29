@@ -1,18 +1,29 @@
+/*                               SCSS                             */
+
 .page-content {
   display: flex;
-  height:  $page-content-height;
-  margin:  0 auto;
+  height: $page-content-height;
+  margin: 0 auto;
   max-width: $site-max-width;
-  padding:   $large-space;
+
+  @include desktop() {
+    padding: $large-space;
+  }
 }
 
 .page-content__sidebar {
-  display: flex;
+  display: none; // Only display sidebar for larger screens
   padding-right: $large-space;
-  width: $page-content-sidebar-width;  
+  width: $page-content-sidebar-width;
+  @include desktop() {
+    display: flex;
+  }
 }
 
 .page-content__main {
   display: flex;
-  width: $page-content-main-width;
+  width: 100%;
+  @include desktop() {
+    width: $page-content-main-width;
+  }
 }
