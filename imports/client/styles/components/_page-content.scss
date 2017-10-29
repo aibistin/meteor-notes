@@ -1,9 +1,9 @@
 .page-content {
   display: flex;
-  height: $page-content-height;
-  margin: 0 auto;
+  height:  $page-content-height;
+  margin:  0 auto;
   max-width: $site-max-width;
-  padding:   $large-space $space;
+  padding:   $large-space;
 }
 
 .page-content__sidebar {

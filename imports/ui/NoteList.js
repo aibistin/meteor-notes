@@ -13,14 +13,15 @@ import NoteListEmptyItem from './NoteListEmptyItem';
 export const NoteList = (props) => {
     return (
         <div className="item-list" >
-          { props.notes.length === 0 ? <NoteListEmptyItem /> : undefined } 
           <NoteListHeader />
-          NoteList Count: { props.notes.length }
           {
               props.notes.map( (note) =>  {
                   return <NoteListItem key={note._id} note={note} />;
               })
           }
+          
+          { props.notes.length === 0 ? <NoteListEmptyItem /> : undefined } 
+          
         </div>
     );
 };
