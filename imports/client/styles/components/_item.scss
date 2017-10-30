@@ -4,6 +4,7 @@
   border: 1px solid $grey;
   overflow-y: scroll;
   width: 100%;
+  -webkit-overflow-scrolling: touch; // Allow scrolling to run on mobile device "momentum scrolling"
 }
 
 .item-list__header{

@@ -21,6 +21,7 @@
   left: -100vw; // Shift menu to the left
   right: 0;
   bottom: 0;
+  z-index: 1; // fix bug created when we added "-webkit-overflow-scrolling: touch". Prevent textarea from overlaying scroll bar. 
   
   @include desktop() {
     display: flex;

@@ -24,6 +24,7 @@
     outline: none;
     resize: none;
     padding: $input-spacing;
+    -webkit-overflow-scrolling: touch; // Allow scrolling to run on mobile device
 }
 
 .editor__message {
