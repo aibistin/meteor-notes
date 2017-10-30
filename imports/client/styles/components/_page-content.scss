@@ -12,12 +12,28 @@
 }
 
 .page-content__sidebar {
-  display: none; // Only display sidebar for larger screens
-  padding-right: $large-space;
-  width: $page-content-sidebar-width;
+  display: flex;
+  transition: left .3s ease;
+  width: 100vw;
+  /* Position Mobile Sidebar */
+  position: fixed;
+  top: $header-height; // Prevent it from covering the header
+  left: -100vw; // Shift menu to the left
+  right: 0;
+  bottom: 0;
+  
   @include desktop() {
     display: flex;
+    padding-right: $large-space;
+    position: static; /* Will appear in logical order as per the markup */
+    width: $page-content-sidebar-width;
   }
+}
+
+/* 'is-nav-open' is set in client/main.js based on Session variable set in PrivateHeader.js */
+
+.is-nav-open .page-content__sidebar {
+  left: 0; // Move the menu from -100vw back to 0
 }
 
 .page-content__main {
